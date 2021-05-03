@@ -5,7 +5,7 @@ pipeline {
         stage('infracost-diff') {
             agent {
                 docker {
-                    image 'infracost:test'
+                    image 'infracost/infracost:test'
                     args '--user=root --entrypoint='
                 }
             }
