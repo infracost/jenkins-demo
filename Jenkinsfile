@@ -33,8 +33,6 @@ pipeline {
                     reportFiles: 'infracost_diff.html',
                     reportName: 'Infracost Diff Output'
                 ])
-
-                sh 'rm infracost_diff.html'
             }
         }
     }
