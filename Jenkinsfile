@@ -6,6 +6,8 @@ pipeline {
             agent {
                 docker {
                     image 'infracost/infracost:test'
+                    // The image needs to run as root as it creates files in ~/.config
+                    // Also override the entrypoint to do nothing as we define that in steps below
                     args '--user=root --entrypoint='
                 }
             }
@@ -18,7 +20,11 @@ pipeline {
 
             steps {
                 sh '/scripts/ci/jenkins_diff.sh'
+
+                // This ensures that the 'jenkins' user can cleanup without running into permission issues for
+                // files/folders that Terraform created (such as .terraform)
                 sh 'chmod -R 777 .'
+
                 publishHTML (target: [
                     allowMissing: false,
                     alwaysLinkToLastBuild: false,
