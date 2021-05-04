@@ -6,6 +6,6 @@ The [Infracost Jenkins](https://github.com/infracost/infracost-jenkins/) integra
 
 See the [Infracost integrations](https://www.infracost.io/docs/integrations/cicd) page for other integrations.
 
-<img src="infracost_menu_option.png" width=557 alt="Example screenshot1" />
+<kbd><img src="infracost_menu_option.png" width=557 alt="Example screenshot1" /></kbd>
 
-<img src="infracost_diff.png" width=557 alt="Example screenshot2" />
+<kbd><img src="infracost_diff.png" width=557 alt="Example screenshot2" /></kbd>
