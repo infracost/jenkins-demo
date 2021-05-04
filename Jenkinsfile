@@ -2,11 +2,11 @@ pipeline {
     agent any
     stages {
 
-        stage('infracost-diff') {
+        stage('infracost') {
             agent {
                 docker {
                     image 'infracost/infracost:test'
-                    args '--user=jenkins --entrypoint='
+                    args '--user=root --entrypoint='
                 }
             }
 
@@ -18,22 +18,16 @@ pipeline {
 
             steps {
                 sh '/scripts/ci/jenkins_diff.sh'
-
+                sh 'chmod -R 777 .'
                 publishHTML (target: [
                     allowMissing: false,
                     alwaysLinkToLastBuild: false,
                     keepAll: true,
                     reportDir: './',
                     reportFiles: 'infracost_diff_output.html',
-                    reportName: "Infracost Diff Output"
+                    reportName: 'Infracost Diff Output'
                 ])
             }
-        }
-    }
-    post {
-        always {
-            sh "chmod -R 777 ."
-            cleanWs()
         }
     }
 }
