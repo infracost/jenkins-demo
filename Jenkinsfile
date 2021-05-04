@@ -6,7 +6,7 @@ pipeline {
             agent {
                 docker {
                     image 'infracost/infracost:test'
-                    args '--user=root --entrypoint='
+                    args '--entrypoint='
                 }
             }
 
