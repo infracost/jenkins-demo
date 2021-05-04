@@ -30,9 +30,11 @@ pipeline {
                     alwaysLinkToLastBuild: false,
                     keepAll: true,
                     reportDir: './',
-                    reportFiles: 'infracost_diff_output.html',
+                    reportFiles: 'infracost_diff.html',
                     reportName: 'Infracost Diff Output'
                 ])
+
+                sh 'rm infracost_diff.html'
             }
         }
     }
