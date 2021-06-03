@@ -5,7 +5,7 @@ pipeline {
         stage('infracost') {
             agent {
                 docker {
-                    image 'infracost/infracost:latest'
+                    image 'infracost/infracost:test'
                     // The image needs to run as root as it creates files in ~/.config
                     // Also override the entrypoint to do nothing as we define that in steps below
                     args "--user=root --entrypoint=''"
